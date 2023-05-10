@@ -52,6 +52,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"stellar-sdk": "^10.4.1"
+		"stellar-sdk": "^10.4.1",
+		"svelte-routing": "^1.8.8"
 	}
 }
