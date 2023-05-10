@@ -10,4 +10,3 @@ export const fundAccount = async (publicKey: string, amount: number) => {
       console.error('Error funding account:', error);
     }
   };
-  
