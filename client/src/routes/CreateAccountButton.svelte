@@ -18,4 +18,3 @@
 
 <p>Public key: {newAccount.publicKey}</p>
 <p>Secret key: {newAccount.secretKey}</p>
-<p>Prueba</p>
