@@ -14,6 +14,7 @@
       balance = await fetchBalance(newAccount.publicKey);
     } catch (error) {
       console.error('Error fetching balance:', error);
+      balance = 'Error fetching balance'
     }
   });
 </script>
