@@ -1,21 +1,17 @@
 <script lang="ts">
-  import { fundAccount } from '../utils/addFunds.ts';
-
-  export let newAccount: {
-    publicKey: string;
-    secretKey: string;
-  };
+  import { fundAccount } from '../utils/addFunds.js';
+  import { account } from "../store/store.js";
 
   let message: string = '';
 
   const handleAddFunds = async () => {
     try {
       message = 'Loading...'
-      const response = await fundAccount(newAccount.publicKey, 200);
-      if(response.status >= 400) throw new Error
+      const { publicKey } = $account;
+      const response = await fundAccount(publicKey);
+      if (response.status >= 400) throw new Error();
       message = 'Funds added successfully';
     } catch (error) {
-      console.error('Error:', error);
       message = 'Error adding funds';
     }
   };
@@ -24,7 +20,7 @@
 <main>
   <form>
     <button type="button" on:click={handleAddFunds}>
-      Agregar fondos
+      Add funds
     </button>
   </form>
   
