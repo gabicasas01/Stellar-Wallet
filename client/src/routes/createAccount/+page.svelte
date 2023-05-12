@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { createAccount } from "../../utils/createAccount.ts";
+  import { createAccount } from "../../utils/createAccount";
   import AddFunds from '../../components/AddFunds.svelte';
   import GetBalance from '../../components/GetBalance.svelte'
+  import SendFunds from '../../components/SendFunds.svelte'
 
   let newAccount = {
     publicKey: '',
     secretKey: '',
   };
 
-  let showGetBalance = false
+  let showGetBalance = false;
+  let showNewTransaction = false;
 
   const handleCreateAccount = async () => {
     const { publicKey, secretKey } = await createAccount();
@@ -19,6 +21,10 @@
   const handleGetBalance = () => {
     showGetBalance = !showGetBalance
   }
+  const handleSendFunds = () => {
+    showNewTransaction = !showNewTransaction
+  }
+
 </script>
 
 <main>
@@ -29,9 +35,13 @@
     <p>Secret key: {newAccount.secretKey}</p>
     <AddFunds {newAccount} />
     <button on:click={handleGetBalance}>Get Balance</button>
+    <button on:click={handleSendFunds}>Send Funds</button>
     {#if showGetBalance}
       <GetBalance {newAccount} /> 
     {/if}
+    {#if showNewTransaction}
+      <SendFunds {newAccount} /> 
+  {/if}
   {/if}
 </main>
 
