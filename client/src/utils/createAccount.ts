@@ -8,7 +8,6 @@ export const createAccount = async (): Promise<{ publicKey: string; secretKey: s
 
     return { publicKey, secretKey };
   } catch (error) {
-    console.error('Error creating Stellar account:', error);
     throw new Error('Failed to create Stellar account');
   }
 };
