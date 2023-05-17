@@ -1,6 +1,7 @@
 <script lang="ts">
 import { createAccount } from "../../utils/createAccount.js";
 import { account } from "../../store/store.js";
+import { onMount } from "svelte";
 import AddFunds from '../../components/AddFunds.svelte';
 import GetBalance from '../../components/GetBalance.svelte'
 import SendFunds from '../../components/SendFunds.svelte'
@@ -21,10 +22,10 @@ const handleSendFunds = () => {
   showNewTransaction = !showNewTransaction
 }
 
+onMount(handleCreateAccount);
 </script>
 
 <main>
-  <button on:click={handleCreateAccount}>Create</button>
   {#if $account.publicKey.length > 1 && $account.secretKey.length > 1}
     <h1>My account</h1>
     <p>Public key: {$account.publicKey}</p>
@@ -38,6 +39,8 @@ const handleSendFunds = () => {
     {#if showNewTransaction}
       <SendFunds/> 
     {/if}
+  {:else}
+    <button disabled>Creating Account...</button>
   {/if}
 </main>
 
