@@ -6,20 +6,21 @@ import AddFunds from '../../components/AddFunds.svelte';
 import GetBalance from '../../components/GetBalance.svelte'
 import SendFunds from '../../components/SendFunds.svelte'
 
-let showGetBalance = false;
-let showNewTransaction = false;
+let isGetBalanceShown = false;
+let isNewTransactionShown = false;
+
 
 const handleCreateAccount = async () => {
   const { publicKey, secretKey } = await createAccount()
-  account.set({ publicKey, secretKey })
+  $account = {publicKey, secretKey}
 }
 
 const handleGetBalance = () => {
-  showGetBalance = !showGetBalance
+  isGetBalanceShown = !isGetBalanceShown
 }
 
 const handleSendFunds = () => {
-  showNewTransaction = !showNewTransaction
+  isNewTransactionShown = !isNewTransactionShown
 }
 
 onMount(handleCreateAccount);
@@ -33,10 +34,10 @@ onMount(handleCreateAccount);
     <AddFunds/>
     <button on:click={handleGetBalance}>Get Balance</button>
     <button on:click={handleSendFunds}>Send Funds</button>
-    {#if showGetBalance}
+    {#if isGetBalanceShown}
       <GetBalance/> 
     {/if}
-    {#if showNewTransaction}
+    {#if isNewTransactionShown}
       <SendFunds/> 
     {/if}
   {:else}
