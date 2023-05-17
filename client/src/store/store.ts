@@ -1,11 +1,7 @@
 import { writable } from 'svelte/store';
+import type { IAccount } from '../utils/IAccount';
 
-interface Account {
-  publicKey: string;
-  secretKey: string;
-}
-
-export const account = writable<Account>({
+export const account = writable<IAccount>({
   publicKey: '',
   secretKey: '',
 });

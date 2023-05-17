@@ -1,16 +1,11 @@
 <script lang="ts">
 	import { sendNewTransaction } from '../services/sendFunds.js';
-	import { account } from "../store/store.js";
+	import { account } from '../store/store.js';
+	import type { ITransaction } from '../utils/ITransaction';
 
 	const { secretKey } = $account;
 
-	interface Transaction {
-		amount: string | null;
-		destination: string | null;
-		state: string | null;
-	}
-
-	let transaction: Transaction = {
+	let transaction: ITransaction = {
 		amount: null,
 		destination: null,
 		state: null
