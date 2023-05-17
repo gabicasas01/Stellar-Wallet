@@ -1,8 +1,8 @@
-import StellarSdk from 'stellar-sdk';
+import StellarSdk, { Horizon } from 'stellar-sdk';
 
-const VITE_HORIZON_URL = import.meta.env.VITE_HORIZON_URL
+const VITE_HORIZON_URL = import.meta.env['VITE_HORIZON_URL'];
 
-type BalanceLine = StellarSdk.Horizon.BalanceLine;
+type BalanceLine = Horizon.BalanceLine;
 
 const server = new StellarSdk.Server(VITE_HORIZON_URL);
 
@@ -17,7 +17,6 @@ export const fetchBalance = async (publicKey: string): Promise<string> => {
       throw new Error('Native balance not found.');
     }
   } catch (error) {
-    console.error('Error fetching balance:', error);
     throw error;
   }
 };
