@@ -2,29 +2,27 @@
   import { fundAccount } from '../utils/addFunds.js';
   import { account } from "../store/store.js";
 
-  let message: string = '';
+  let funds: string = '';
 
   const handleAddFunds = async () => {
     try {
-      message = 'Loading...'
+      funds = 'Loading...'
       const { publicKey } = $account;
       const response = await fundAccount(publicKey);
       if (response.status >= 400) throw new Error();
-      message = 'Funds added successfully';
+      funds = 'Added successfully';
     } catch (error) {
-      message = 'Error adding funds';
+      funds = 'Error adding funds';
     }
   };
 </script>
 
 <main>
-  <form>
     <button type="button" on:click={handleAddFunds}>
       Add funds
     </button>
-  </form>
   
-  {#if message}
-    <p>{message}</p> 
+  {#if funds}
+    <p>Funds: {funds}</p> 
   {/if}
 </main>
