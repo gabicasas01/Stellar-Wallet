@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fundAccount } from '../utils/addFunds';
+  import { fundAccount } from '../services/addFunds';
   import { account } from "../store/store";
 
   let funds: string = '';

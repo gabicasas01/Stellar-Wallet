@@ -1,13 +1,14 @@
 <script lang="ts">
-	import { sendNewTransaction } from '../utils/sendFunds';
+	import { sendNewTransaction } from '../services/sendFunds.js';
+	import { account } from "../store/store.js";
+
+	const { secretKey } = $account;
 
 	interface Transaction {
 		amount: string | null;
 		destination: string | null;
 		state: string | null;
 	}
-
-	export let newAccount: any;
 
 	let transaction: Transaction = {
 		amount: null,
@@ -18,10 +19,18 @@
 	const handleSubmit = async () => {
 		transaction.state = 'Loading...';
 		try {
-			await sendNewTransaction(newAccount.secretKey, transaction.destination, transaction.amount);
-			transaction.state = 'Success';
-		} catch (error) {
-			transaction.state = 'Error: ' + error.message;
+			if (secretKey && transaction.amount && transaction.destination) {
+				await sendNewTransaction(secretKey, transaction.destination, transaction.amount);
+				transaction.state = 'Success';
+			} else {
+				throw new Error('Amount and destination are required.');
+			}
+		} catch (error: unknown) {
+			if (error instanceof Error) {
+				transaction.state = 'Error: ' + error.message;
+			} else {
+				transaction.state = 'Unknown error occurred.';
+			}
 		}
 	};
 </script>

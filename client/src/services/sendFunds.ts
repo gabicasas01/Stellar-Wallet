@@ -1,7 +1,8 @@
 import { Server, Networks, Keypair, TransactionBuilder, Operation, Asset, Memo, NotFoundError, BASE_FEE } from "stellar-sdk";
 
 export const sendNewTransaction = async (secretKey: string, destinationId: string, amount: string): Promise<any> => {
-  const server = new Server("https://horizon-testnet.stellar.org");
+  const VITE_HORIZON_URL = import.meta.env['VITE_HORIZON_URL'];
+  const server = new Server(VITE_HORIZON_URL);
   const sourceKeys = Keypair.fromSecret(secretKey);
 
   try {
@@ -40,7 +41,6 @@ export const sendNewTransaction = async (secretKey: string, destinationId: strin
 
   try {
     const result = await server.submitTransaction(transaction);
-    console.log("Success! Results:", result);
     return result;
   } catch (error) {
     throw new Error("Something went wrong!" + error);

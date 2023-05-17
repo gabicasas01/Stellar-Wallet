@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createAccount } from "../../utils/createAccount.js";
+import { createAccount } from "../../services/createAccount.js";
 import { account } from "../../store/store.js";
 import { onMount } from "svelte";
 import AddFunds from '../../components/AddFunds.svelte';

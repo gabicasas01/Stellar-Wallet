@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fetchBalance } from '../utils/getBalance.js';
+  import { fetchBalance } from '../services/getBalance.js';
   import { account } from "../store/store.js";
 
   let balance: string = 'Loading...';
