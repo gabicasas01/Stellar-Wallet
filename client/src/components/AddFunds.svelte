@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { fundAccount } from '../utils/addFunds.js';
-  import { account } from "../store/store.js";
+  import { fundAccount } from '../utils/addFunds';
+  import { account } from "../store/store";
 
   let funds: string = '';
+  const BAD_REQUEST_STATUS = 400;
 
   const handleAddFunds = async () => {
     try {
       funds = 'Loading...'
       const { publicKey } = $account;
       const response = await fundAccount(publicKey);
-      if (response.status >= 400) throw new Error();
+      if (response.status >= BAD_REQUEST_STATUS) throw new Error();
       funds = 'Added successfully';
     } catch (error) {
       funds = 'Error adding funds';
