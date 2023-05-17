@@ -6,5 +6,5 @@
     
     <p>Welcome to your Svelte Wallet App!</p>
     
-    <a href="/createAccount">Create Account</a>
+    <a href="/account">Create Account</a>
 </main>

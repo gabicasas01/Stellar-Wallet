@@ -26,7 +26,7 @@ onMount(handleCreateAccount);
 </script>
 
 <main>
-  {#if $account.publicKey.length > 1 && $account.secretKey.length > 1}
+  {#if $account.publicKey && $account.secretKey}
     <h1>My account</h1>
     <p>Public key: {$account.publicKey}</p>
     <p>Secret key: {$account.secretKey}</p>

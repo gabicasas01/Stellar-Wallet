@@ -1,7 +1,7 @@
 
 describe("My Account Component", () => {
   beforeEach(() => {
-    cy.visit("/createAccount");
+    cy.visit("/account");
   });
 
   it("should return a pair of keys (publicKey and secretKey) that are string values", () => {
