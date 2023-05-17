@@ -3,8 +3,7 @@ export const fundAccount = async (publicKey: string) => {
     const response = await fetch(
       `https://friendbot.stellar.org?addr=${encodeURIComponent(publicKey)}`,
     );
-    const responseJSON = await response.json();
-    return responseJSON;
+    return await response.json();
   } catch (error) {
     throw new Error('Failed to add funds in Stellar account');
   }
