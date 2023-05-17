@@ -12,15 +12,16 @@ describe("My Account Component", () => {
   });
 
   it("should increase the account balance when clicking on addFunds", () => {
-    const addFundsResponse: 'Loading...' | 'Funds added successfully' | 'Error adding funds' = 'Funds added successfully';
+    const fundsStatus: 'Funds: Loading...' | 'Funds: Added successfully' | 'Funds: Error adding funds' = 'Funds: Added successfully';
     cy.get("main button").contains("Add funds").click();
-    cy.get("main p").contains(addFundsResponse);
+    cy.get("main p").contains(fundsStatus);
+    cy.get("p:contains('Funds:')").invoke("text").should("be.a", "string");
   });
 
   it("should return the current balance of the account when clicking on balance", () => {
-    const getBalanceResposne: 'Loading...' | 'Balance:' |'Error fetching balance' = 'Error fetching balance';
+    const balanceStatus: 'Balance: Loading...' | 'Balance: Error fetching balance' = 'Balance: Error fetching balance';
     cy.get("main button").contains("Balance").click();
-    cy.get("main p").contains(getBalanceResposne);
+    cy.get("main p").contains(balanceStatus);
     cy.get("p:contains('Balance:')").invoke("text").should("be.a", "string");
   });
   
