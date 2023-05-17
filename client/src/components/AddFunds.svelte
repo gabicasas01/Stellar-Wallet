@@ -2,18 +2,18 @@
   import { fundAccount } from '../services/addFunds';
   import { account } from "../store/store";
 
-  let funds: string = '';
+  let fundsStatus: string = '';
   const BAD_REQUEST_STATUS = 400;
 
   const handleAddFunds = async () => {
     try {
-      funds = 'Loading...'
+      fundsStatus = 'Loading...'
       const { publicKey } = $account;
       const response = await fundAccount(publicKey);
       if (response.status >= BAD_REQUEST_STATUS) throw new Error();
-      funds = 'Added successfully';
+      fundsStatus = 'Added successfully';
     } catch (error) {
-      funds = 'Error adding funds';
+      fundsStatus = 'Error adding funds';
     }
   };
 </script>
@@ -23,7 +23,7 @@
       Add funds
     </button>
   
-  {#if funds}
-    <p>Funds: {funds}</p> 
+  {#if fundsStatus}
+    <p>Status: {fundsStatus}</p> 
   {/if}
 </main>
