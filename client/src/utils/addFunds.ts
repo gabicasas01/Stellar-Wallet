@@ -6,7 +6,6 @@ export const fundAccount = async (publicKey: string) => {
     const responseJSON = await response.json();
     return responseJSON;
   } catch (error) {
-    console.error('Error funding account:', error);
     throw new Error('Failed to add funds in Stellar account');
   }
 };
