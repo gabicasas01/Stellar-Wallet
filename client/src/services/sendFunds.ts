@@ -40,8 +40,7 @@ export const sendNewTransaction = async (secretKey: string, destinationId: strin
   transaction.sign(sourceKeys);
 
   try {
-    const result = await server.submitTransaction(transaction);
-    return result;
+    return await server.submitTransaction(transaction);
   } catch (error) {
     throw new Error("Something went wrong!" + error);
   }
