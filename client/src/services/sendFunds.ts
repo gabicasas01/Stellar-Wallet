@@ -1,8 +1,7 @@
-import { Server, Networks, Keypair, TransactionBuilder, Operation, Asset, Memo, NotFoundError, BASE_FEE } from "stellar-sdk";
+import { Networks, Keypair, TransactionBuilder, Operation, Asset, Memo, NotFoundError, BASE_FEE } from "stellar-sdk";
+import server from './server';
 
 export const sendNewTransaction = async (secretKey: string, destinationId: string, amount: string): Promise<any> => {
-  const VITE_HORIZON_URL = import.meta.env['VITE_HORIZON_URL'];
-  const server = new Server(VITE_HORIZON_URL);
   const sourceKeys = Keypair.fromSecret(secretKey);
 
   try {
