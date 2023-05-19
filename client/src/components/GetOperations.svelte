@@ -35,7 +35,7 @@
 						<p>Account: {record.account}</p>
 						<p>Created At: {record.created_at}</p>
 					{:else if record.type === 'payment'}
-						<p>Amount: {record.amount}</p>
+						<p>Amount: {record.amount.split('.')[0]}</p>
 						<p>From: {record.source_account}</p>
 						<p>To: {record.to}</p>
 						<p>Created At: {record.created_at}</p>
