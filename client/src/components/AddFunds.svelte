@@ -19,7 +19,7 @@
 </script>
 
 <main>
-    <button type="button" on:click={handleAddFunds}>
+    <button id="add-funds-button" type="button" on:click={handleAddFunds}>
       Add funds
     </button>
   
