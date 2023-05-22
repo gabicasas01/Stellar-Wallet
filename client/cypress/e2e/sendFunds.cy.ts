@@ -21,12 +21,12 @@ describe('Send Funds Component', () => {
     cy.get('p:contains("State:")').should('have.text', 'State: Success');
   });
 
-  it('should show error message when amount and destination are missing', () => {
+  it('should show an error message when destination is unknow', () => {
     cy.get('button[type="submit"]').click();
     cy.get('p:contains("State:")').should('have.text', 'State: Error: Amount and destination are required.');
   });
 
-  it('should show error message when destination are unknow', () => {
+  it('should show an error message when destination is unknow', () => {
     const amount = '100';
     const destination = '123456';
 
