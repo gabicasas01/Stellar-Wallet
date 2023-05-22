@@ -8,8 +8,7 @@ export const getOperations = async (publicKey: string): Promise<(IPayment | ICre
   try {
     const account = await server.loadAccount(publicKey);
     const operations = await account.operations();
-    const sortedRecords = sortRecords(operations);
-    return sortedRecords;
+    return sortRecords(operations);
   } catch (error) {
     return [];
   }
