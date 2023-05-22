@@ -24,12 +24,14 @@
 		isNewTransactionShown = !isNewTransactionShown;
 	};
 
-  const handleSeeOperations = () => {
+	const handleSeeOperations = () => {
 		isOperationsShown = !isOperationsShown;
 	};
 
-	onMount(handleCreateAccount);
-</script>
+	onMount( async () => {
+        await handleCreateAccount()
+    });
+	</script>
 
 <main>
 	{#if $account.publicKey && $account.secretKey}
@@ -39,7 +41,7 @@
 		<AddFunds />
 		<button on:click={handleGetBalance}>Get Balance</button>
 		<button id="send-funds-button" on:click={handleSendFunds}>Send Funds</button>
-    <button on:click={handleSeeOperations}>See Operations</button>
+		<button on:click={handleSeeOperations}>See Operations</button>
 		{#if isGetBalanceShown}
 			<GetBalance />
 		{/if}
