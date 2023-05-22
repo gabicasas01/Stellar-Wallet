@@ -2,29 +2,28 @@
 	import { onMount } from 'svelte';
 	import { getOperations } from '../services/getOperations';
 	import { account } from '../store/store.js';
-	import type { IPayment } from 'src/utils/IPayment';
-	import type { ICreateAccount } from 'src/utils/ICreateAccount';
-	import type { IRecord } from 'src/utils/IRecord';
+	import type { IPayment } from 'src/utils/IPayment.js';
+	import type { ICreateAccount } from 'src/utils/ICreateAccount.js';
+	import type { IRecord } from 'src/utils/IRecord.js';
 
 	const { publicKey } = $account;
 	let records: (ICreateAccount | IPayment | IRecord)[] = [];
-	let status: string = 'Loading...';
+	let status: string | null = null;
 
 	onMount(async () => {
 		try {
+			status = 'Loading...'
 			records = await getOperations(publicKey);
-			if (records.length === 0) {
-				status = 'No transactions found';
-			}
+			status = null
 		} catch (error) {
-			status = 'No transactions found';
+			status = (error as Error).message;
 		}
 	});
 </script>
 
 <main>
 	<h1>My operations</h1>
-	{#if records.length === 0}
+	{#if status}
 		<p>{status}</p>
 	{:else}
 		<ul>

@@ -9,7 +9,7 @@ export const getOperations = async (publicKey: string): Promise<(IPayment | ICre
     const account = await server.loadAccount(publicKey);
     const operations = await account.operations();
     return sortRecords(operations);
-  } catch (error) {
-    return [];
+  } catch (error: unknown) {
+    throw new Error((error as Error).message);
   }
 };
