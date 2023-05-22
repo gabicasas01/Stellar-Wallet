@@ -33,7 +33,7 @@ onMount(handleCreateAccount);
     <p>Secret key: {$account.secretKey}</p>
     <AddFunds/>
     <button on:click={handleGetBalance}>Get Balance</button>
-    <button on:click={handleSendFunds}>Send Funds</button>
+    <button id="send-funds-button" on:click={handleSendFunds}>Send Funds</button>
     {#if isGetBalanceShown}
       <GetBalance/> 
     {/if}
