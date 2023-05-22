@@ -5,9 +5,3 @@ import type { IRecord } from "./IRecord";
 export interface IOperations {
   records: ( IPayment | ICreateAccount | IRecord)[];
 }
-
-
-
-
-
-
