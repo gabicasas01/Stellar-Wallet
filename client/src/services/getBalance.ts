@@ -1,10 +1,7 @@
-import { Server, Horizon } from 'stellar-sdk';
-
-const VITE_HORIZON_URL = import.meta.env['VITE_HORIZON_URL'];
+import type { Horizon } from 'stellar-sdk';
+import server from './server';
 
 type BalanceLine = Horizon.BalanceLine;
-
-const server = new Server(VITE_HORIZON_URL);
 
 export const fetchBalance = async (publicKey: string): Promise<string> => {
   try {
